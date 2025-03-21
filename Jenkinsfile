@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    echo ' Compiling C++ file...'
+                    echo 'Compiling C++ file...'
                     sh '''
                     g++ -o PES2UG22CS173-1 main/hello.cpp
                     '''
@@ -16,10 +16,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo ' Running compiled program...'
-                    sh '''
-                    ./PES2UG22CS173-1
-                    '''
+                    echo 'Running compiled program...'
+                   sh './missing_exec'
                 }
             }
         }
@@ -27,7 +25,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    echo ' Deploying Application...'
+                    echo 'Deploying Application...'
                 }
             }
         }
@@ -36,4 +34,6 @@ pipeline {
     post {
         failure {
             echo 'Pipeline failed! Check errors.'
-
+        }
+    }
+}
